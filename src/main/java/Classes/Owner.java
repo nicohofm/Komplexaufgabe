@@ -6,6 +6,12 @@ public class Owner extends Human {
     private SmartPhone smartPhone;
     private Car car;
 
+    public Owner()
+    {
+        smartPhone = new SmartPhone(new Wallet(5000));
+        car = new Car();
+    }
+
     public SmartPhone getSmartPhone() {
         return smartPhone;
     }

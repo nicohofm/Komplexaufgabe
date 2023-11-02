@@ -21,7 +21,7 @@ public class SmartPhone {
     }
 
     public Wallet getWallet() {
-        return wallet;
+        return new Wallet(_wallet.getDeposit());
     }
 
     public void setWallet(Wallet wallet) {
