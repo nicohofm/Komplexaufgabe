@@ -8,7 +8,8 @@ public class Execute {
 
     public void StartUp(){
         speedCamera.setShutdown(false);
-
+        parkingSpace = new ParkingSpace();
+        
     }
 
     public void Import(){
