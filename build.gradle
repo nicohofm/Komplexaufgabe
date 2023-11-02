@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'dhbw'
+version null
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.16.0'
+    implementation group: 'org.json', name: 'json', version: '20231013'
+}
