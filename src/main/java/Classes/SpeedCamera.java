@@ -17,8 +17,18 @@ public class SpeedCamera {
     private Camera camera;
     private ParkingSpace parkingSpace;
 
-    public void setParkingSpace(ParkingSpace parkingSpace){}
-    public void startup(){}
+    public SpeedCamera()
+    {
+        this.isShutdown = true;
+    }
+
+    public void setShutdown(boolean shutdown) {
+        isShutdown = shutdown;
+    }
+
+
+    //public void setParkingSpace(ParkingSpace parkingSpace){}
+    //public void startup(){isShutdown = false;}
     public boolean checkOfficer(int id, int pin){return false;}
     public void incomingCar(Car car){}
     public void loadFines(String path){}
@@ -26,5 +36,5 @@ public class SpeedCamera {
     public void stopCar(){}
     public void createReport(){}
     public void createExport(){}
-    public void shutdown(){}
+    //public void shutdown(){isShutdown = true;}
 }
