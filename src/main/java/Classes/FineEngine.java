@@ -16,9 +16,9 @@ public class FineEngine {
 
    }
    public void loadFines(String path){}
-    public void checkSpeed(int speed){}
-    public void processFelony(Felony felony){}
-    public void deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){}
-    public void getPenalty(int overSpeed){}
+    public boolean checkSpeed(int speed){return false;}
+    public boolean processFelony(Felony felony){return false;}
+    public int deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){return 1;}
+    public int getPenalty(int overSpeed){return 1;}
     public void getMoney(int phoneNumber, int amount){}
 }
