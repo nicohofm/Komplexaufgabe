@@ -23,13 +23,13 @@ public class Application {
 
     public static void main(String... args) {
         build();
-        JSONObject jsonObject = parseJSONFile("configuration.json");
+        JSONObject jsonObject = parseJSONFile("bussgeld.json");
         System.out.println(jsonObject);
     }
 
     public static void build() {
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter("configuration.json"));
+            PrintWriter writer = new PrintWriter(new FileWriter("test.json"));
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("setting 01", "abc");
