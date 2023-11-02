@@ -1,7 +1,7 @@
 package Classes;
 
 public class ParkingSpace {
-    private Car[][] places;
+    private Car[][] places = new Car[50][20];
     //private ReadWriteCSV fileReader;
 
     public void fillParkingSpace(){}

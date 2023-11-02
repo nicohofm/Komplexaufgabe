@@ -1,6 +1,8 @@
 package Classes;
 
-public class Owner {
+import AbstracClasses.Human;
+
+public class Owner extends Human {
     private SmartPhone smartPhone;
     private Car car;
 

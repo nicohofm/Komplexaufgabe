@@ -1,9 +1,14 @@
 package Classes;
 
 public class Wallet {
-    private final int deposit = 5000;
+    private int deposit;
 
-    public void  getMoney(int amount){
+    public Wallet(int deposit)
+    {
+        this.deposit = deposit;
+    }
+
+    public void getMoney(int amount){
 
     }
 

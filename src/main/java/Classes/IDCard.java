@@ -1,7 +1,13 @@
 package Classes;
 
-public class IDCard {
+import Interfaces.IEncryption;
+
+public class IDCard{
     private String magneticStrip;
+
+    public IDCard(String magneticStrip){
+        this.magneticStrip = magneticStrip;
+    }
 
     public String getMagneticStrip() {
         return magneticStrip;

@@ -2,7 +2,11 @@ package Classes;
 
 public class SmartPhone {
     private int phoneNumber;
-    private Wallet wallet;
+    private Wallet _wallet;
+
+    public SmartPhone(Wallet wallet){
+        this._wallet = wallet;
+    }
 
     public void getMoney(int amount){
 
@@ -21,6 +25,6 @@ public class SmartPhone {
     }
 
     public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
+        this._wallet = wallet;
     }
 }
