@@ -1,0 +1,42 @@
+{
+  "test1": {
+    "Geschwindigkeit zu hoch in km/h": "0 - 10",
+    "Bussgeld": "58.50"
+  },
+  "test2": {
+    "Geschwindigkeit zu hoch in km/h": "11 - 15",
+    "Bussgeld": "78.50"
+  },
+  "test3": {
+    "Geschwindigkeit zu hoch in km/h": "16 - 20",
+    "Bussgeld": "98.50"
+  },
+  "test4": {
+    "Geschwindigkeit zu hoch in km/h": "21 - 25",
+    "Bussgeld": "143.50"
+  },
+  "test5": {
+    "Geschwindigkeit zu hoch in km/h": "26 - 30",
+    "Bussgeld": "208.50"
+  },
+  "test6": {
+    "Geschwindigkeit zu hoch in km/h": "31 - 40",
+    "Bussgeld": "288.50"
+  },
+  "test7": {
+    "Geschwindigkeit zu hoch in km/h": "41 - 50",
+    "Bussgeld": "428.50"
+  },
+  "test8": {
+    "Geschwindigkeit zu hoch in km/h": "51 - 60",
+    "Bussgeld": "591.50"
+  },
+  "test9": {
+    "Geschwindigkeit zu hoch in km/h": "61 - 70",
+    "Bussgeld": "738.50"
+  },
+  "test10": {
+    "Geschwindigkeit zu hoch in km/h": "> 70",
+    "Bussgeld": "843.50"
+  }
+}
