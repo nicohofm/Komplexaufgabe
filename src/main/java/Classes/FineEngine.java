@@ -15,10 +15,10 @@ public class FineEngine {
    public FineEngine(LED led, Camera camera, MobileNetworkModule mobileNetworkModule, CentralUnit centralUnit){
 
    }
-   public void loadFines(){}
-    public void checkSpeed(){}
-    public void processFelony(){}
-    public void deductingSpeedTolerance(){}
-    public void getPenalty(){}
-    public void getMoney(){}
+   public void loadFines(String path){}
+    public void checkSpeed(int speed){}
+    public void processFelony(Felony felony){}
+    public void deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){}
+    public void getPenalty(int overSpeed){}
+    public void getMoney(int phoneNumber, int amount){}
 }
