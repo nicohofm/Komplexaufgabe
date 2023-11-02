@@ -1,3 +1,8 @@
+package Classes;
+
+import java.util.Date;
+import java.util.UUID;
+
 public class SpeedCamera {
     private UUID serialNumber;
     private Date manufacturingDate;

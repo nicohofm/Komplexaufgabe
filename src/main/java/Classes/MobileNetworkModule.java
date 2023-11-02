@@ -1,3 +1,7 @@
+package Classes;
+
+import org.json.JSONString;
+
 public class MobileNetworkModule {
     private Police police;
     private VehicleRegistrationAuthority vehicleRegistrationAuthority;

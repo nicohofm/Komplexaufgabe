@@ -1,3 +1,7 @@
+package Classes;
+
+import java.util.HashMap;
+
 public class VehicleRegistrationAuthority {
     private HashMap<String, Owner> carRegistrations;
     //private EncryptionAES encryptionAES;

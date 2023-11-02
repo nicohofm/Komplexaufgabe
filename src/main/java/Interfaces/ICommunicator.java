@@ -1,9 +1,9 @@
 package Interfaces;
-import ;
+import Classes.*;
 
 public interface ICommunicator {
-    Speedcamera speedCamera;
-    Simulator simulator;
+    SpeedCamera speedCamera = null;
+    Simulator simulator = null;
 
     void startup();
     void executeSimulation();
