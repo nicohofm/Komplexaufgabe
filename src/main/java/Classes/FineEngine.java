@@ -1,5 +1,6 @@
 package Classes;
 
+import cryptography.aes.AESEncryption;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +12,9 @@ public class FineEngine {
     //private ReadWriteJson jsonConverter;
     private AIEngine aiEngine;
 
-   public FineEngine(LED led, Camera camera, MobileNetworkModule mobileNetworkModule, CentralUnit centralUnit){
+   public FineEngine(MobileNetworkModule mobileNetworkModule, CentralUnit centralUnit){
         aiEngine = new AIEngine();
+        this.mobileNetworkModule = mobileNetworkModule;
    }
     public void loadFines(HashMap<String, String> map){
         for (String key: map.keySet())
@@ -32,6 +34,18 @@ public class FineEngine {
         }
         return false;
    }
+   public void checkFace(String face)
+   {
+        AESEncryption aesEncryption = new AESEncryption();
+        String encryptedFace = aesEncryption.encrypt(face);
+        mobileNetworkModule.isOwnerWanted(encryptedFace);
+   }
+
+   public void getCarOwner(String licensePlate)
+   {
+       mobileNetworkModule.checkLicensePlate();
+   }
+
     public boolean processFelony(Felony felony){return false;}
     public int deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){return 1;}
     public int getPenalty(int overSpeed){

@@ -1,6 +1,7 @@
 package Classes;
 
 public class AIEngine {
+
     public PictureData extractPictureInformation(char[][] picture){
         StringBuilder face = new StringBuilder();
         StringBuilder licensePlate = new StringBuilder();

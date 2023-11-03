@@ -11,7 +11,11 @@ public class MobileNetworkModule {
     {
         police = new Police();
     }
-    public boolean isOwnerWanted(String face){return false;}
+
+    public boolean isOwnerWanted(String face){
+        return police.isOwnerWanted(face);
+    }
+
     public JSONString checkLicensePlate(String licensePlate){return null;}
 
     public Police getPolice() {

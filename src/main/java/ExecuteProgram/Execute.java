@@ -56,7 +56,7 @@ public class Execute {
     }
 
     public void ExecuteSimulation(){
-        FineEngine fineEngine = new FineEngine(speedCamera.getLed(), speedCamera.getCamera(), speedCamera.getMobileNetworkModule(), speedCamera.getCentralUnit());
+        FineEngine fineEngine = new FineEngine(speedCamera.getMobileNetworkModule(), speedCamera.getCentralUnit());
         if(fineCatolog == null)
         {
             System.out.println("no data imported");
@@ -91,7 +91,9 @@ public class Execute {
                 if(fineEngine.checkSpeed(car.getSpeed(), car)){
                     speedCamera.getLed().Flash();
                     Felony felony = speedCamera.getCamera().takePicture(car);
-                    speedCamera.getFineEngine().getAiEngine().extractPictureInformation(felony.getPicture());
+                    PictureData pictureData = speedCamera.getFineEngine().getAiEngine().extractPictureInformation(felony.getPicture());
+                    speedCamera.getFineEngine().checkFace(pictureData.getOwnerFace());
+                    speedCamera.getFineEngine().getCarOwner(pictureData.getLicensePlate().getId());
                 }
             }
         }
