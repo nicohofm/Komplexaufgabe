@@ -112,8 +112,7 @@ public class Record {
     public void setMeasuredSpeedAfterDeductionTolerance(int measuredSpeedAfterDeductionTolerance) {
         this.measuredSpeedAfterDeductionTolerance = measuredSpeedAfterDeductionTolerance;
     }
-
-    public int getPenalty() {
+    public double getPenalty() {
         return penalty;
     }
 
