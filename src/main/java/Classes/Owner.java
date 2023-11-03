@@ -11,7 +11,6 @@ public class Owner extends Human {
     public Owner(String name, Date birthdate, String face)
     {
         smartPhone = new SmartPhone(new Wallet(5000));
-
     }
 
     public SmartPhone getSmartPhone() {

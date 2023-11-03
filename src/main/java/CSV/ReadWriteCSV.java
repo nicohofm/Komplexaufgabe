@@ -1,4 +1,4 @@
-package Classes;
+package CSV;
 import Interfaces.IReadWriteFile;
 
 import java.io.BufferedReader;

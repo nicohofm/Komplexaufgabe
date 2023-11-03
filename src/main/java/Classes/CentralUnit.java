@@ -16,7 +16,18 @@ public class CentralUnit {
 
     }
     public boolean CheckOfficer(int id, int pin){
-        return false;
+        if (registeredOfficers.containsKey(id)){
+            if(Integer.parseInt(registeredOfficers.get(id).getIdCard().getMagneticStrip()) == pin)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
     }
     public void AddRecord(Record record){
 

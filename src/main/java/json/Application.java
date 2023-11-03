@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
 
 public class Application {
     public static JSONObject parseJSONFile(String filename) {
@@ -40,5 +44,9 @@ public class Application {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static Map<String, String> getFineCatalog() {
+        return fineCatalog;
     }
 }
