@@ -7,7 +7,14 @@ public class MobileNetworkModule {
     private VehicleRegistrationAuthority vehicleRegistrationAuthority;
     //private EncryptionAES encryptionAES;
 
+    public MobileNetworkModule()
+    {
+        police = new Police();
+    }
     public boolean isOwnerWanted(String face){return false;}
     public JSONString checkLicensePlate(String licensePlate){return null;}
 
+    public Police getPolice() {
+        return police;
+    }
 }

@@ -6,15 +6,13 @@ import java.util.Map;
 public class FineEngine {
     private HashMap<int[], Double> fines;
     private int sequenceID = 1;
-    private LED led;
-    private Camera camera;
     private MobileNetworkModule mobileNetworkModule;
     private CentralUnit centralUnit;
     //private ReadWriteJson jsonConverter;
     private AIEngine aiEngine;
 
    public FineEngine(LED led, Camera camera, MobileNetworkModule mobileNetworkModule, CentralUnit centralUnit){
-
+        aiEngine = new AIEngine();
    }
     public void loadFines(HashMap<String, String> map){
         for (String key: map.keySet())
@@ -36,7 +34,21 @@ public class FineEngine {
    }
     public boolean processFelony(Felony felony){return false;}
     public int deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){return 1;}
-    public int getPenalty(int overSpeed){return 1;}
+    public int getPenalty(int overSpeed){
+        /*for (int[] key: fines.keySet()) {
+            int speedDifference = speed - 53;
+            if(key.length == 1)
+            {
+                if(speedDifference > key[0])
+                {
+                }
+            }
+            else
+            {
+                if(speedDifference > key[0] && )
+            }
+        }*/
+       return 1;}
     public void getMoney(int phoneNumber, int amount){}
 
     public AIEngine getAiEngine() {

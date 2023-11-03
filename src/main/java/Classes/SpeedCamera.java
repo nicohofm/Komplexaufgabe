@@ -19,6 +19,7 @@ public class SpeedCamera {
 
     public SpeedCamera()
     {
+        mobileNetworkModule = new MobileNetworkModule();
         this.isShutdown = true;
     }
 
@@ -36,5 +37,30 @@ public class SpeedCamera {
     public void stopCar(){}
     public void createReport(){}
     public void createExport(){}
+    public MobileNetworkModule getMobileNetworkModule()
+    {
+        return mobileNetworkModule;
+    }
+
+    public LED getLed() {
+        return led;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public CentralUnit getCentralUnit() {
+        return centralUnit;
+    }
+
+    public FineEngine getFineEngine() {
+        return fineEngine;
+    }
+
+    public LaserScanner getLaserScanner() {
+        return laserScanner;
+    }
+
     //public void shutdown(){isShutdown = true;}
 }

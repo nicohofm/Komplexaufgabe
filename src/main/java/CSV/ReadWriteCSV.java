@@ -24,8 +24,9 @@ public class ReadWriteCSV implements IReadWriteFile{
         }
     }
 
-    public List<String[]> getCsvData()
+    public List<String[]> getCsvData(String path)
     {
+        readFile(path);
         return csvData;
     }
 

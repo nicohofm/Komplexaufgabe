@@ -10,6 +10,9 @@ public class Owner extends Human {
 
     public Owner(String name, Date birthdate, String face)
     {
+        this.face = face;
+        this.name = name;
+        this.birthdate = birthdate;
         smartPhone = new SmartPhone(new Wallet(5000));
     }
 
@@ -27,5 +30,10 @@ public class Owner extends Human {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public String getFace()
+    {
+        return face;
     }
 }

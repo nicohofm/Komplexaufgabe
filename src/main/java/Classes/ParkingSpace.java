@@ -15,10 +15,27 @@ public class ParkingSpace {
         int j = 0;
         for (String[] data: userdata)
         {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            places[j][i] = new Car(new LicensePlate(data[0]), data[1], data[2], new Owner(data[3], format.parse(data[4])));
+            try{
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = format.parse(data[4]);
+                places[j][i] = new Car(new LicensePlate(data[0]), data[1], data[2], new Owner(data[3], date, data[4]));
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            i++;
+            if(i == 20)
+            {
+                j++;
+            }
         }
     }
     public void deleteCar(Car car){}
+
+    public Car getCar(int column, int row)
+    {
+        return places[column][row];
+    }
 
 }

@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Application {
+
+    private static Map<String, String> fineCatalog = new HashMap<>();
+
     public static JSONObject parseJSONFile(String filename) {
         String content = "N/A";
 
@@ -20,20 +23,23 @@ public class Application {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
         return new JSONObject(content);
     }
 
     public static void main(String... args) {
-        build();
-        JSONObject jsonObject = parseJSONFile("bussgeld.json");
-        System.out.println(jsonObject);
+        JSONObject jsonObject = parseJSONFile("./data/bussgeld.json");
+        Iterator<String> keys = jsonObject.keys();
+        while(keys.hasNext()) {
+            String key = keys.next();
+            if (jsonObject.get(key) instanceof JSONObject) {
+                fineCatalog.put(jsonObject.getJSONObject(key).get("Geschwindigkeit").toString(), jsonObject.getJSONObject(key).get("Bussgeld").toString());
+            }
+        }
     }
 
     public static void build() {
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter("test.json"));
+            PrintWriter writer = new PrintWriter(new FileWriter("bussgeld.json"));
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("setting 01", "abc");
