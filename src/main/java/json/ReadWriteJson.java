@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class ReadWriteJson implements IReadWriteFile {
@@ -25,6 +26,11 @@ public class ReadWriteJson implements IReadWriteFile {
         return new JSONObject(content);
     }
 
+    public JSONObject parseJSONString(String data)
+    {
+        return new JSONObject(data);
+    }
+
 
     @Override
     public void readFile(String path) {
@@ -32,7 +38,7 @@ public class ReadWriteJson implements IReadWriteFile {
     }
 
     @Override
-    public void writeFile(String path) {
+    public void writeFile(List<List<String>>data, String path) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter("bussgeld.json"));
 

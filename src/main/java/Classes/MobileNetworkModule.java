@@ -1,9 +1,12 @@
 package Classes;
 
 import org.json.JSONString;
+import Enums.MobileCentralUnit;
 
 public class MobileNetworkModule {
     private Police police;
+
+    private MobileCentralUnit mobileCentralUnit;
     private VehicleRegistrationAuthority vehicleRegistrationAuthority;
     //private EncryptionAES encryptionAES;
 
@@ -16,7 +19,7 @@ public class MobileNetworkModule {
         return police.isOwnerWanted(face);
     }
 
-    public JSONString checkLicensePlate(String licensePlate){return null;}
+    public String checkLicensePlate(String licensePlate){return vehicleRegistrationAuthority.getOwnerData(licensePlate);}
 
     public Police getPolice() {
         return police;

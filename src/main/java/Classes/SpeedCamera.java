@@ -21,6 +21,7 @@ public class SpeedCamera {
     {
         mobileNetworkModule = new MobileNetworkModule();
         this.isShutdown = true;
+        traficSpikes = new TraficSpikes();
     }
 
     public void setShutdown(boolean shutdown) {
@@ -40,6 +41,13 @@ public class SpeedCamera {
     public MobileNetworkModule getMobileNetworkModule()
     {
         return mobileNetworkModule;
+    }
+    public void setFineEngine(FineEngine fineEngine)
+    {
+        this.fineEngine = fineEngine;
+    }
+    public TraficSpikes getTraficSpikes() {
+        return traficSpikes;
     }
 
     public LED getLed() {
