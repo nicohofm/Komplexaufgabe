@@ -23,6 +23,6 @@ public class AIEngine {
                 }
             }
         }
-        return null;
+        return new PictureData(new LicensePlate(licensePlate.toString()), face.toString());
     }
 }

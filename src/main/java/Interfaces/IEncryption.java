@@ -1,6 +1,7 @@
 package Interfaces;
 
 public interface IEncryption {
-    String encode(String content);
-    String code(String content);
+    String encrypt(String content);
+    String decrypt(String content);
+
 }

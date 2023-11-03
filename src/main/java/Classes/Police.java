@@ -5,11 +5,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import cryptography.aes.*;
 
 public class Police {
     private List<Owner> wantedOwner;
     private List<Owner> arrestedOwner;
     private List<Car> confiscatedCars;
+    private AESEncryption aesEncryption;
     //private ReadWriteCSV csvReader;
     //private EncryptionAES encryptionAES;
 
@@ -32,6 +34,14 @@ public class Police {
 
         }
     }
-    public boolean isOwnerWanted(String face){return false;}
 
+    public boolean isOwnerWanted(String face){
+        String faceIs = aesEncryption.decrypt(face);
+        for (Owner owner : wantedOwner) {
+            if (owner.getFace().equals(face)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

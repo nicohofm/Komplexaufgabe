@@ -33,7 +33,18 @@ public class ReadWriteJson implements IReadWriteFile {
 
     @Override
     public void writeFile(String path) {
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter("bussgeld.json"));
 
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("setting 01", "abc");
+            jsonObject.put("setting 02", "xyz");
+
+            writer.write(jsonObject.toString());
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public HashMap<String, String> getFineCatalog(String path) {
