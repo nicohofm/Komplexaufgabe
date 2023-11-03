@@ -17,6 +17,7 @@ public class ReadWriteCSV implements IReadWriteFile{
             {
                 csvData.add(line.split(";"));
             }
+            csvData.remove(0);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());

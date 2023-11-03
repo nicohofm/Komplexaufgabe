@@ -6,10 +6,16 @@ public class Execute {
     private ParkingSpace parkingSpace;
     private SpeedCamera speedCamera;
 
+    public Execute()
+    {
+        parkingSpace = new ParkingSpace();
+        speedCamera = new SpeedCamera();
+    }
+
     public void StartUp(){
         speedCamera.setShutdown(false);
-        parkingSpace = new ParkingSpace();
-        
+        parkingSpace.fillParkingSpace();
+
     }
 
     public void Import(){

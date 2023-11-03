@@ -2,14 +2,16 @@ package Classes;
 
 import AbstracClasses.Human;
 
+import java.util.Date;
+
 public class Owner extends Human {
     private SmartPhone smartPhone;
     private Car car;
 
-    public Owner()
+    public Owner(String name, Date birthdate, String face)
     {
         smartPhone = new SmartPhone(new Wallet(5000));
-        car = new Car();
+
     }
 
     public SmartPhone getSmartPhone() {

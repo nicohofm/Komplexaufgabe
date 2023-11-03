@@ -8,6 +8,14 @@ public class Car {
     private Owner owner;
     private final char[][] frontSide = new char[16][8];
 
+    public Car(LicensePlate licensePlate, String registrationID, String manufacturer, Owner owner)
+    {
+        this.licensePlate = licensePlate;
+        this.registrationID = registrationID;
+        this.manufacturer = manufacturer;
+        this.owner = owner;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
