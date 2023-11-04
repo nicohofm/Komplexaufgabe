@@ -1,5 +1,7 @@
 package Classes;
 
+import cryptography.aes.AESEncryption;
+import cryptography.rsa.RSAEncryption;
 import org.json.JSONString;
 import Enums.MobileCentralUnit;
 
@@ -13,13 +15,29 @@ public class MobileNetworkModule {
     public MobileNetworkModule()
     {
         police = new Police();
+        vehicleRegistrationAuthority = new VehicleRegistrationAuthority();
     }
 
     public boolean isOwnerWanted(String face){
-        return police.isOwnerWanted(face);
+        /*//RSAEncryption
+        RSAEncryption rsaEncryption = new RSAEncryption();
+        String encryptedFace = rsaEncryption.encrypt(face);
+        */
+        AESEncryption aesEncryption = new AESEncryption();
+        String encryptedFace = aesEncryption.encrypt(face);
+        return police.isOwnerWanted(encryptedFace);
     }
 
-    public String checkLicensePlate(String licensePlate){return vehicleRegistrationAuthority.getOwnerData(licensePlate);}
+    public String checkLicensePlate(String licensePlate){
+        AESEncryption aesEncryption = new AESEncryption();
+        String dataCarOwner = vehicleRegistrationAuthority.getOwnerData(aesEncryption.encrypt(licensePlate));
+        return aesEncryption.decrypt(dataCarOwner);
+    }
+
+    public VehicleRegistrationAuthority getVehicleRegistrationAuthority()
+    {
+        return vehicleRegistrationAuthority;
+    }
 
     public Police getPolice() {
         return police;

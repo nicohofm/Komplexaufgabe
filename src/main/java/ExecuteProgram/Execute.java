@@ -7,13 +7,11 @@ import json.ReadWriteJson;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Execute {
     private ParkingSpace parkingSpace;
@@ -27,43 +25,47 @@ public class Execute {
         fineCatalog = new HashMap<>();
         parkingSpace = new ParkingSpace();
         speedCamera = new SpeedCamera();
+        readWriteJson = new ReadWriteJson();
     }
 
     public void StartUp(){
         ReadWriteCSV readWriteCSV = new ReadWriteCSV();
         speedCamera.setShutdown(false);
-        List<String[]> data = readWriteCSV.getCsvData("data.csv");
+        List<String[]> data = readWriteCSV.getCsvData("./data/data.csv");
         parkingSpace.fillParkingSpace(data);
         speedCamera.getMobileNetworkModule().getPolice().fillWantedOwner(data);
+        speedCamera.getMobileNetworkModule().getVehicleRegistrationAuthority().setCarRegistrations(parkingSpace.getCarList());
     }
 
     public void Import(){
-        CentralUnit centralUnit = new CentralUnit();
-        Scanner idInput = new Scanner(System.in);
-        System.out.println("Give your id: ");
-        int id = idInput.nextInt();
+        if(!speedCamera.getIsShutdown()) {
+            CentralUnit centralUnit = new CentralUnit();
+            centralUnit.FillRegisteredOfficers(1, new Officer(1, 1234));
+            Scanner idInput = new Scanner(System.in);
+            System.out.println("Give your id: ");
+            int id = idInput.nextInt();
 
-        Scanner pwInput = new Scanner(System.in);
-        System.out.println("Give your password: ");
-        int pw = pwInput.nextInt();
+            Scanner pwInput = new Scanner(System.in);
+            System.out.println("Give your pin or fingerprint: ");
+            int pw = pwInput.nextInt();
 
-        boolean check = centralUnit.CheckOfficer(id, pw);
-        if (!check){
-            System.out.println("credentials incorrect");
-            return;
-        }
-        else {
-            Scanner answerInput = new Scanner(System.in);
-            System.out.println("Start import y/n");
-            String answer = answerInput.nextLine();
-            if(Objects.equals(answer, "y")){
-                fineCatalog = readWriteJson.getFineCatalog("./data/bussgeld.json");
-                fineEngine = new FineEngine(speedCamera.getMobileNetworkModule(), speedCamera.getCentralUnit());
-                speedCamera.setFineEngine(fineEngine);
-                speedCamera.getFineEngine().loadFines(fineCatalog);
-            }
-            if(Objects.equals(answer, "n")){
+            boolean check = centralUnit.CheckOfficer(id, pw);
+            if (!check) {
+                System.out.println("credentials incorrect");
                 return;
+            } else {
+                Scanner answerInput = new Scanner(System.in);
+                System.out.println("Start import y/n");
+                String answer = answerInput.nextLine();
+                if (Objects.equals(answer, "y")) {
+                    fineCatalog = readWriteJson.getFineCatalog("./data/bussgeld.json");
+                    fineEngine = new FineEngine(speedCamera.getMobileNetworkModule(), speedCamera.getCentralUnit());
+                    speedCamera.setFineEngine(fineEngine);
+                    speedCamera.getFineEngine().loadFines(fineCatalog);
+                }
+                if (Objects.equals(answer, "n")) {
+                    return;
+                }
             }
         }
     }
@@ -82,8 +84,8 @@ public class Execute {
                     boolean gotACar = false;
                     while(!gotACar)
                     {
-                        int column = rnd.nextInt(0, 50);
-                        int row = rnd.nextInt(0, 20);
+                        int column = rnd.nextInt(0, 49);
+                        int row = rnd.nextInt(0, 19);
                         if(parkingSpace.getCar(column, row) != null)
                         {
                             cars.add(parkingSpace.getCar(column, row));
@@ -92,39 +94,40 @@ public class Execute {
                     }
                 }
             }
-            for (Car car: cars) {
-                if(rnd.nextInt(0,10) < 1)
+            for (int j = 0; j < cars.size(); j++) {
+                if(rnd.nextInt(0,100) < 10)
                 {
                     if(rnd.nextInt(0, 100) < 15)
                     {
-                        car.setSpeed(rnd.nextInt(74, 133));
+                        cars.get(j).setSpeed(rnd.nextInt(74, 133));
                     }
                     else
                     {
-                        car.setSpeed(rnd.nextInt(63, 73));
+                        cars.get(j).setSpeed(rnd.nextInt(63, 73));
                     }
                 }
                 else {
-                    car.setSpeed(rnd.nextInt(45, 54));
+                    cars.get(j).setSpeed(rnd.nextInt(45, 54));
                 }
-                speedCamera.getLaserScanner().MeasureSpeed(car);
-                if(fineEngine.checkSpeed(car.getSpeed(), car)){
+                speedCamera.getLaserScanner().MeasureSpeed(cars.get(j));
+                if(fineEngine.checkSpeed(cars.get(j).getSpeed(), cars.get(j))){
                     boolean ownerwanted = false;
                     speedCamera.getLed().Flash();
-                    Felony felony = speedCamera.getCamera().takePicture(car);
+                    Felony felony = speedCamera.getCamera().takePicture(cars.get(j));
                     PictureData pictureData = speedCamera.getFineEngine().getAiEngine().extractPictureInformation(felony.getPicture());
                     ownerwanted = speedCamera.getFineEngine().checkFace(pictureData.getOwnerFace());
                     JSONObject jsonObject = speedCamera.getFineEngine().getCarOwner(pictureData.getLicensePlate().getId());
                     speedCamera.getFineEngine().createRecord(pictureData, jsonObject.get("name").toString(),
-                            jsonObject.get("birthDay").toString(), jsonObject.get("phoneNumber").toString(),
-                 50, car.getSpeed(), car.getManufacturer());
+                            jsonObject.get("birthdate").toString(), jsonObject.get("phoneNumber").toString(),
+                        50, cars.get(j).getSpeed(), cars.get(j).getManufacturer());
                     if(ownerwanted)
                     {
                         speedCamera.getTraficSpikes().launch();
-                        speedCamera.getMobileNetworkModule().getPolice().arrestOwner(car.getOwner());
-                        parkingSpace.deleteCar(car);
-                        for (Car remainingCar: cars) {
-                            if(remainingCar.getLicensePlate().getId().equals(car.getLicensePlate().getId()))
+                        speedCamera.getMobileNetworkModule().getPolice().arrestOwner(cars.get(j).getOwner());
+                        speedCamera.getMobileNetworkModule().getPolice().confiscateCar(cars.get(j));
+                        parkingSpace.deleteCar(cars.get(j));
+                        for (int i = 0; i<cars.size(); i++) {
+                            if(cars.get(i).getLicensePlate().getId().equals(cars.get(j).getLicensePlate().getId()))
                             {
                                 cars.remove(car);
                             }
@@ -165,7 +168,7 @@ public class Execute {
         recordOverviewAscTimestamp.forEach(record -> logger.info(record.getNanoTimestamp()+" "+record.getName()+" "+ record.getBirthDate() +" "+record.getPhoneNumber()+" "+record.getLicencePlate()+" "+record.getMeasuredSpeed()));
         logger.info("-----------------------------------------");
         logger.info("Übersicht der records, absteigend sortiert nach measuredSpeed");
-        recordOverviewDescSpeed.forEach(record -> logger.info(record.getMeasuredSpeed()+" "+record.getNanoTimestamp()+" "+record.getName()+" "+ record.getBirthDate() +" "+record.getPhoneNumber()+" "+record.getLicencePlate()));
+        recordOverviewDescSpeed.forEach(record -> logger.info(String.valueOf(record.getMeasuredSpeed())+" "+record.getNanoTimestamp()+" "+record.getName()+" "+ record.getBirthDate() +" "+record.getPhoneNumber()+" "+record.getLicencePlate()));
         logger.info("-----------------------------------------");
         logger.info("Min Speed: " + String.valueOf(minSpeed));
         logger.info("-----------------------------------------");
@@ -188,6 +191,10 @@ public class Execute {
             exportList.add(tmpList);
         }
         readWriteCSV.writeFile(exportList,"./data/export.csv");
+        /*
+        AESEncryption aesEncryption = new AESEncryption();
+        aesEncryption.encryptFile("./data/export.csv", "./data/export.enc");
+        */
     }
 
     public void Shutdown(){

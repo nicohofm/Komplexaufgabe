@@ -40,12 +40,13 @@ public class ReadWriteCSV implements IReadWriteFile{
             {
                 StringBuilder line = new StringBuilder();
                 for (int i = 0; i < value.size(); i++) {
+                    line.append(value.get(i));
                     if (i != value.size() - 1) {
                         line.append(',');
                     }
-                    line.append("\n");
-                    fileWriter.write(line.toString());
                 }
+                line.append("\n");
+                fileWriter.write(line.toString());
             }
             fileWriter.close();
         }catch(Exception e)

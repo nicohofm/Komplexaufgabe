@@ -4,9 +4,13 @@ import Interfaces.IEncryption;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -40,6 +44,25 @@ public class AESEncryption implements IEncryption {
         }
     }
 
+    public void encryptFile(String path, String finalFilename)
+    {
+        try
+        {
+            String content = Files.readString(Paths.get(path));
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, buildKey(), buildIV());
+            FileOutputStream fileOut = new FileOutputStream(finalFilename);
+            CipherOutputStream cipherOut = new CipherOutputStream(fileOut, cipher);
+            fileOut.write(cipher.getIV());
+            cipherOut.write(content.getBytes());
+        }catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
     public String decrypt(String encryptedMessage) {
         String decryptedMessage;
 
@@ -50,7 +73,6 @@ public class AESEncryption implements IEncryption {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
         return decryptedMessage;
     }
 }

@@ -1,10 +1,11 @@
 package Classes;
 
 public class SmartPhone {
-    private int phoneNumber;
+    private String phoneNumber;
     private Wallet _wallet;
 
-    public SmartPhone(Wallet wallet){
+    public SmartPhone(String phoneNumber, Wallet wallet){
+        this.phoneNumber = phoneNumber;
         this._wallet = wallet;
     }
 
@@ -12,7 +13,7 @@ public class SmartPhone {
 
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

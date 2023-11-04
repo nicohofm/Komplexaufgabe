@@ -8,10 +8,10 @@ public class Officer extends Human {
     private int id;
     private IDCard idCard;
 
-    public Officer(int id)
+    public Officer(int id, int pin/*, String fingerprint*/)
     {
         this.id = id;
-        idCard = new IDCard("1234");
+        idCard = new IDCard(pin/*, fingerprint*/);
     }
     public int getId() {
         return id;

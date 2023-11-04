@@ -9,14 +9,12 @@ public class Owner extends Human {
     private SmartPhone smartPhone;
     private Car car;
 
-    public Owner(String name, Date birthdate, String face)
+    public Owner(String name, LocalDate birthdate, String face, String phoneNumber)
     {
-
         this.face = face;
         this.name = name;
         this.birthdate = birthdate;
-        smartPhone = new SmartPhone(new Wallet(5000));
-        MobileCentralUnit mobileCentralUnit;
+        smartPhone = new SmartPhone(phoneNumber, new Wallet(5000));
     }
 
     public SmartPhone getSmartPhone() {

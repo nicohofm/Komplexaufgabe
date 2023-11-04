@@ -5,7 +5,7 @@ import Classes.SmartPhone;
 
 public enum MobileCentralUnit {
     ;
-    private final HashMap<Integer, SmartPhone> allSmartPhones = new HashMap<>();
+    private final HashMap<String, SmartPhone> allSmartPhones = new HashMap<>();
 
      public void setSmartPhone(SmartPhone smartPhone){
         allSmartPhones.put(smartPhone.getPhoneNumber(), smartPhone);

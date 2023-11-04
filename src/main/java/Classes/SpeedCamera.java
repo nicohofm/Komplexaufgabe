@@ -16,12 +16,17 @@ public class SpeedCamera {
     private FineEngine fineEngine;
     private Camera camera;
     private ParkingSpace parkingSpace;
+    private EMP emp;
 
     public SpeedCamera()
     {
         mobileNetworkModule = new MobileNetworkModule();
         this.isShutdown = true;
         traficSpikes = new TraficSpikes();
+        laserScanner = new LaserScanner();
+        centralUnit = new CentralUnit();
+        camera = new Camera();
+        led = new LED();
     }
 
     public void setShutdown(boolean shutdown) {
@@ -35,7 +40,10 @@ public class SpeedCamera {
     public void incomingCar(Car car){}
     public void loadFines(String path){}
     public void arrestWantedOwnerAndCar(Car car){}
-    public void stopCar(){}
+    public void stopCar(){
+        traficSpikes.launch();
+        emp.activateEMP();
+    }
     public void createReport(){}
     public void createExport(){}
     public MobileNetworkModule getMobileNetworkModule()
@@ -48,6 +56,11 @@ public class SpeedCamera {
     }
     public TraficSpikes getTraficSpikes() {
         return traficSpikes;
+    }
+
+    public boolean getIsShutdown()
+    {
+        return isShutdown;
     }
 
     public LED getLed() {
