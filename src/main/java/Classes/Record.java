@@ -1,9 +1,10 @@
 package Classes;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Record {
-    private final char[][] picture = new char[16][8];
+    private char[][] picture = new char[16][8];
     private String licencePlate;
     private String name;
     private Date birthDate;
@@ -11,8 +12,47 @@ public class Record {
     private int allowedSpeed;
     private int measuredSpeed;
     private int measuredSpeedAfterDeductionTolerance;
-    private int penalty;
+    private double penalty;
+    private String manufacturer;
+    private Timestamp nanoTimestamp;
+    private String timestamp;
 
+    private int sequenceID;
+
+    public void setNanoTimestamp(Timestamp nanoTimestamp)
+    {
+        this.nanoTimestamp = nanoTimestamp;
+    }
+    public void setTimestamp(String timestamp)
+    {
+        this.timestamp = timestamp;
+    }
+
+    public void setSequenceID(int sequenceID) {
+        this.sequenceID = sequenceID;
+    }
+    public Timestamp getNanoTimestamp()
+    {
+        return nanoTimestamp;
+    }
+
+    public void setManufacturer(String manufacturer)
+    {
+        this.manufacturer = manufacturer;
+    }
+
+    public int getSequenceID()
+    {
+        return sequenceID;
+    }
+    public String getManufacturer()
+    {
+        return manufacturer;
+    }
+    public String getTimestamp()
+    {
+        return timestamp;
+    }
     public char[][] getPicture() {
         return picture;
     }
@@ -72,12 +112,16 @@ public class Record {
     public void setMeasuredSpeedAfterDeductionTolerance(int measuredSpeedAfterDeductionTolerance) {
         this.measuredSpeedAfterDeductionTolerance = measuredSpeedAfterDeductionTolerance;
     }
-
-    public int getPenalty() {
+    public double getPenalty() {
         return penalty;
     }
 
-    public void setPenalty(int penalty) {
+    public void setPenalty(double penalty) {
         this.penalty = penalty;
+    }
+
+    public void setPicture(char[][] picture)
+    {
+        this.picture = picture;
     }
 }

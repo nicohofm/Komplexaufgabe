@@ -1,10 +1,10 @@
 package CSV;
 import Interfaces.IReadWriteFile;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ReadWriteCSV implements IReadWriteFile{
     private List<String[]> csvData = new ArrayList<>();
@@ -31,7 +31,26 @@ public class ReadWriteCSV implements IReadWriteFile{
     }
 
     @Override
-    public void writeFile(String path) {
-
+    public void writeFile(List<List<String>>data, String path){
+        File csvFile = new File(path);
+        try
+        {
+            FileWriter fileWriter = new FileWriter(csvFile);
+            for(List<String> value : data)
+            {
+                StringBuilder line = new StringBuilder();
+                for (int i = 0; i < value.size(); i++) {
+                    if (i != value.size() - 1) {
+                        line.append(',');
+                    }
+                    line.append("\n");
+                    fileWriter.write(line.toString());
+                }
+            }
+            fileWriter.close();
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }

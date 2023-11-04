@@ -34,6 +34,14 @@ public class Police {
 
         }
     }
+    public void arrestOwner(Owner owner)
+    {
+        arrestedOwner.add(owner);
+    }
+    public void confiscateCar(Car car)
+    {
+        confiscatedCars.add(car);
+    }
 
     public boolean isOwnerWanted(String face){
         String faceIs = aesEncryption.decrypt(face);

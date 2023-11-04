@@ -24,6 +24,6 @@ public class AIEngine {
                 }
             }
         }
-        return new PictureData(new LicensePlate(licensePlate.toString()), face.toString());
+        return new PictureData(new LicensePlate(licensePlate.toString()), face.toString(), picture);
     }
 }
