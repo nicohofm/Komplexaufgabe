@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ParkingSpace {
-    private Car[][] places = new Car[50][20];
+    private final Car[][] places = new Car[50][20];
     //private ReadWriteCSV fileReader;
 
     public void fillParkingSpace(List<String[]> userdata)

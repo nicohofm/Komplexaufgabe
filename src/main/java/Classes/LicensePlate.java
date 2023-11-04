@@ -2,7 +2,7 @@ package Classes;
 
 public class LicensePlate {
 
-    private String id;
+    private final String id;
 
     public LicensePlate(String id)
     {

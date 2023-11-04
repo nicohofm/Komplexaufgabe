@@ -1,11 +1,11 @@
 package Classes;
 
 public class Car {
-    private String manufacturer;
-    private String registrationID;
+    private final String manufacturer;
+    private final String registrationID;
     private int speed;
-    private LicensePlate licensePlate;
-    private Owner owner;
+    private final LicensePlate licensePlate;
+    private final Owner owner;
     private final char[][] frontSide = new char[16][8];
 
     public Car(LicensePlate licensePlate, String registrationID, String manufacturer, Owner owner)

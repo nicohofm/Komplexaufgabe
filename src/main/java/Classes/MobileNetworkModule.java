@@ -6,10 +6,10 @@ import org.json.JSONString;
 import Enums.MobileCentralUnit;
 
 public class MobileNetworkModule {
-    private Police police;
+    private final Police police;
 
-    private MobileCentralUnit mobileCentralUnit;
-    private VehicleRegistrationAuthority vehicleRegistrationAuthority;
+    private final MobileCentralUnit mobileCentralUnit;
+    private final VehicleRegistrationAuthority vehicleRegistrationAuthority;
     //private EncryptionAES encryptionAES;
 
     public MobileNetworkModule()

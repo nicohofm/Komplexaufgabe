@@ -9,8 +9,8 @@ import java.util.List;
 
 public class VehicleRegistrationAuthority {
     private HashMap<Car, Owner> carRegistrations;
-    private AESEncryption aesEncryption;
-    private RSAEncryption rsaEncryption;
+    private final AESEncryption aesEncryption;
+    private final RSAEncryption rsaEncryption;
     //private EncryptionAES encryptionAES;
     //private ReadWriteJson jsonConverter;
     //private ReadWriteCSV fileReader;

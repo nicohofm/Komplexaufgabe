@@ -10,10 +10,10 @@ import java.util.List;
 import cryptography.aes.*;
 
 public class Police {
-    private List<Owner> wantedOwner;
-    private List<Owner> arrestedOwner;
-    private List<Car> confiscatedCars;
-    private AESEncryption aesEncryption;
+    private final List<Owner> wantedOwner;
+    private final List<Owner> arrestedOwner;
+    private final List<Car> confiscatedCars;
+    private final AESEncryption aesEncryption;
     //private ReadWriteCSV csvReader;
     //private EncryptionAES encryptionAES;
 
