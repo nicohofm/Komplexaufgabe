@@ -1,7 +1,7 @@
 package Classes;
 
 public class Camera {
-    private Felony felony;
+    private final Felony felony;
 
     public Camera()
     {

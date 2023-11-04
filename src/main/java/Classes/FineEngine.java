@@ -11,13 +11,13 @@ import java.util.*;
 import Enums.MobileCentralUnit;
 
 public class FineEngine {
-    private HashMap<int[], Double> fines;
+    private final HashMap<int[], Double> fines;
     private int sequenceID = 1;
-    private MobileNetworkModule mobileNetworkModule;
+    private final MobileNetworkModule mobileNetworkModule;
     private CentralUnit centralUnit;
-    private ReadWriteJson jsonConverter;
-    private AIEngine aiEngine;
-    private List<Record> recordList;
+    private final ReadWriteJson jsonConverter;
+    private final AIEngine aiEngine;
+    private final List<Record> recordList;
 
    public FineEngine(MobileNetworkModule mobileNetworkModule, CentralUnit centralUnit){
         aiEngine = new AIEngine();
@@ -39,11 +39,8 @@ public class FineEngine {
         }
     }
     public boolean checkSpeed(int speed, Car car){
-        if (speed > 53){
-            return true;
-        }
-        return false;
-   }
+        return speed > 53;
+    }
    public boolean checkFace(String face)
    {
         return mobileNetworkModule.isOwnerWanted(face);

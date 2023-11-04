@@ -8,7 +8,7 @@ import java.awt.desktop.OpenFilesEvent;
 import java.util.TreeMap;
 
 public class CentralUnit {
-    private TreeMap<Integer, Officer> registeredOfficers;
+    private final TreeMap<Integer, Officer> registeredOfficers;
     private Record[] fineRecord;
     private IEncryption encryptionSHA256;
 
@@ -23,13 +23,7 @@ public class CentralUnit {
     public boolean CheckOfficer(int id, int pin){
         SHAEncryption shaEncryption = new SHAEncryption();
         if (registeredOfficers.containsKey(id)){
-            if(registeredOfficers.get(id).getIdCard().getMagneticStrip().equals(shaEncryption.encrypt(String.valueOf(pin))))
-            {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return registeredOfficers.get(id).getIdCard().getMagneticStrip().equals(shaEncryption.encrypt(String.valueOf(pin)));
         }
         else {
             return false;

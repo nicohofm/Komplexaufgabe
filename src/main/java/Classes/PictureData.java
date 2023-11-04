@@ -1,9 +1,9 @@
 package Classes;
 
 public class PictureData {
-    private LicensePlate licensePlate;
-    private String ownerFace;
-    private char[][] picture;
+    private final LicensePlate licensePlate;
+    private final String ownerFace;
+    private final char[][] picture;
 
     public PictureData(LicensePlate licensePlate, String ownerFace, char[][] picture)
     {

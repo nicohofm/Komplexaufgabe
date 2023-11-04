@@ -7,7 +7,7 @@ import java.util.Base64;
 
 public class IDCard{
     private final String magneticStrip;
-    private SHAEncryption shaEncryption;
+    private final SHAEncryption shaEncryption;
     //byte[] fingerprint;
 
     public IDCard(int magneticStrip/*, String fingerprint*/){

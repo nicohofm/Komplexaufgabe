@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ReadWriteCSV implements IReadWriteFile{
-    private List<String[]> csvData = new ArrayList<>();
+    private final List<String[]> csvData = new ArrayList<>();
     @Override
     public void readFile(String path) {
         try{

@@ -5,8 +5,8 @@ import AbstracClasses.Human;
 import java.util.HashMap;
 
 public class Officer extends Human {
-    private int id;
-    private IDCard idCard;
+    private final int id;
+    private final IDCard idCard;
 
     public Officer(int id, int pin/*, String fingerprint*/)
     {

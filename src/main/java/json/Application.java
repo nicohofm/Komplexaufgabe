@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Application {
 
-    private static Map<String, String> fineCatalog = new HashMap<>();
+    private static final Map<String, String> fineCatalog = new HashMap<>();
 
     public static JSONObject parseJSONFile(String filename) {
         String content = "N/A";

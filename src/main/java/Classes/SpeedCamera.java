@@ -7,14 +7,14 @@ public class SpeedCamera {
     private UUID serialNumber;
     private Date manufacturingDate;
     private boolean isShutdown;
-    private MobileNetworkModule mobileNetworkModule;
-    private LED led;
-    private LaserScanner laserScanner;
-    private CentralUnit centralUnit;
-    private TraficSpikes traficSpikes;
+    private final MobileNetworkModule mobileNetworkModule;
+    private final LED led;
+    private final LaserScanner laserScanner;
+    private final CentralUnit centralUnit;
+    private final TraficSpikes traficSpikes;
     private Police police;
     private FineEngine fineEngine;
-    private Camera camera;
+    private final Camera camera;
     private ParkingSpace parkingSpace;
     // private EMP emp;
 
