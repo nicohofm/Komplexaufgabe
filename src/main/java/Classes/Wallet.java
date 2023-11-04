@@ -8,8 +8,8 @@ public class Wallet {
         this.deposit = deposit;
     }
 
-    public void getMoney(int amount){
-
+    public void getMoney(double amount){
+        deposit = deposit - amount;
     }
 
     public double getDeposit() {

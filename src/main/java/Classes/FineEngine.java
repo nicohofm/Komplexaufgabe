@@ -80,15 +80,15 @@ public class FineEngine {
         record.setPhoneNumber(phoneNumber);
         record.setAllowedSpeed(allowedSpeed);
         record.setMeasuredSpeed(measuredSpeed);
-        record.setMeasuredSpeedAfterDeductionTolerance((measuredSpeed/100)*97);
-        record.setPenalty(getPenalty((measuredSpeed/100)*97));
+        record.setMeasuredSpeedAfterDeductionTolerance((int) (((double)measuredSpeed/100)*97));
+        record.setPenalty(getPenalty(((double)measuredSpeed/100)*97));
         record.setManufacturer(manufacturer);
         recordList.add(record);
    }
 
     private double getPenalty(double measuredSpeedAfterDeductingTolerance){
         for (int[] key: fines.keySet()) {
-            int speedDifference = measuredSpeedAfterDeductingTolerance - 53;
+            double speedDifference = measuredSpeedAfterDeductingTolerance - 53;
             if(key.length == 1)
             {
                 if(speedDifference > key[0])

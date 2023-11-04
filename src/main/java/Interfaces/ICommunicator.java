@@ -3,7 +3,6 @@ import Classes.*;
 
 public interface ICommunicator {
     SpeedCamera speedCamera = null;
-    Simulator simulator = null;
 
     void startup();
     void executeSimulation();

@@ -110,8 +110,8 @@ public class Execute {
                 else {
                     cars.get(j).setSpeed(rnd.nextInt(45, 54));
                 }
-                speedCamera.getLaserScanner().MeasureSpeed(cars.get(j));
-                if(fineEngine.checkSpeed(cars.get(j).getSpeed(), cars.get(j))){
+                int speed = speedCamera.getLaserScanner().MeasureSpeed(cars.get(j));
+                if(fineEngine.checkSpeed(speed, cars.get(j))){
                     boolean ownerwanted = false;
                     speedCamera.getLed().Flash();
                     Felony felony = speedCamera.getCamera().takePicture(cars.get(j));

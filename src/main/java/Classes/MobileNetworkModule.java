@@ -16,6 +16,7 @@ public class MobileNetworkModule {
     {
         police = new Police();
         vehicleRegistrationAuthority = new VehicleRegistrationAuthority();
+        mobileCentralUnit = MobileCentralUnit.INSTANCE;
     }
 
     public boolean isOwnerWanted(String face){
@@ -41,5 +42,10 @@ public class MobileNetworkModule {
 
     public Police getPolice() {
         return police;
+    }
+
+    public SmartPhone getSmartphone(String phoneNumber)
+    {
+        return mobileCentralUnit.getSmartPhone(phoneNumber);
     }
 }
