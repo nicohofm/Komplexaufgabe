@@ -20,6 +20,7 @@ public class Execute {
     private ReadWriteJson readWriteJson;
     private HashMap<String, String> fineCatalog;
 
+
     public Execute()
     {
         fineCatalog = new HashMap<>();
@@ -116,6 +117,7 @@ public class Execute {
                     Felony felony = speedCamera.getCamera().takePicture(cars.get(j));
                     PictureData pictureData = speedCamera.getFineEngine().getAiEngine().extractPictureInformation(felony.getPicture());
                     ownerwanted = speedCamera.getFineEngine().checkFace(pictureData.getOwnerFace());
+                    fineEngine.getMoney(cars.get(j).getOwner().getSmartPhone().getPhoneNumber(), ((double)speed/100)*97);
                     JSONObject jsonObject = speedCamera.getFineEngine().getCarOwner(pictureData.getLicensePlate().getId());
                     speedCamera.getFineEngine().createRecord(pictureData, jsonObject.get("name").toString(),
                             jsonObject.get("birthdate").toString(), jsonObject.get("phoneNumber").toString(),
@@ -129,7 +131,8 @@ public class Execute {
                         for (int i = 0; i<cars.size(); i++) {
                             if(cars.get(i).getLicensePlate().getId().equals(cars.get(j).getLicensePlate().getId()))
                             {
-                                cars.remove(car);
+                                cars.remove(cars.get(i));
+                                break;
                             }
                         }
                     }

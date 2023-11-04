@@ -8,7 +8,7 @@ public class Record {
     private String licencePlate;
     private String name;
     private Date birthDate;
-    private int phoneNumber;
+    private String phoneNumber;
     private int allowedSpeed;
     private int measuredSpeed;
     private int measuredSpeedAfterDeductionTolerance;
@@ -81,11 +81,11 @@ public class Record {
         this.birthDate = birthDate;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

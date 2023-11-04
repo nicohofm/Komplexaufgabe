@@ -29,6 +29,7 @@ public class Police {
     {
         for (String[] data: userdata)
         {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try{
                 if(data[7].equals("yes"))
                 {

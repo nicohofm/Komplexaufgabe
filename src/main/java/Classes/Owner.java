@@ -3,9 +3,14 @@ package Classes;
 import AbstracClasses.Human;
 import Enums.MobileCentralUnit;
 
+
+import java.time.LocalDate;
 import java.util.Date;
 
+
+
 public class Owner extends Human {
+    private MobileCentralUnit mobileCentralUnit;
     private SmartPhone smartPhone;
     private Car car;
 
@@ -15,6 +20,8 @@ public class Owner extends Human {
         this.name = name;
         this.birthdate = birthdate;
         smartPhone = new SmartPhone(phoneNumber, new Wallet(5000));
+        mobileCentralUnit = MobileCentralUnit.INSTANCE;
+        mobileCentralUnit.setSmartPhone(this.smartPhone);
     }
 
     public SmartPhone getSmartPhone() {

@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import Enums.MobileCentralUnit;
 
 public class FineEngine {
     private HashMap<int[], Double> fines;
@@ -105,8 +106,12 @@ public class FineEngine {
                 }
             }
         }
-       return 1;}
-    public void getMoney(int phoneNumber, int amount){}
+       return 1;
+   }
+
+    public void getMoney(String phoneNumber, double measuredSpeed){
+       mobileNetworkModule.getSmartphone(phoneNumber).getWallet().getMoney(getPenalty(measuredSpeed));
+    }
 
     public AIEngine getAiEngine() {
         return aiEngine;

@@ -1,9 +1,9 @@
 package Classes;
 
 public class Wallet {
-    private int deposit;
+    private double deposit;
 
-    public Wallet(int deposit)
+    public Wallet(double deposit)
     {
         this.deposit = deposit;
     }
@@ -12,7 +12,7 @@ public class Wallet {
 
     }
 
-    public int getDeposit() {
+    public double getDeposit() {
         return deposit;
     }
 }
