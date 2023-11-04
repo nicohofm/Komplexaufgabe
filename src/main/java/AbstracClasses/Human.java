@@ -1,17 +1,18 @@
 package AbstracClasses;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class Human {
     protected String name;
-    protected Date birthdate;
+    protected LocalDate birthdate;
     protected String face;
 
     public String getName() {
         return name;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 

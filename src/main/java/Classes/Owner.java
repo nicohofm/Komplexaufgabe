@@ -3,36 +3,29 @@ package Classes;
 import AbstracClasses.Human;
 import Enums.MobileCentralUnit;
 
+
+import java.time.LocalDate;
 import java.util.Date;
 
+
+
 public class Owner extends Human {
+    private MobileCentralUnit mobileCentralUnit;
     private SmartPhone smartPhone;
     private Car car;
 
-    public Owner(String name, Date birthdate, String face)
+    public Owner(String name, LocalDate birthdate, String face, String phoneNumber)
     {
-
         this.face = face;
         this.name = name;
         this.birthdate = birthdate;
-        smartPhone = new SmartPhone(new Wallet(5000));
-        MobileCentralUnit mobileCentralUnit;
+        smartPhone = new SmartPhone(phoneNumber, new Wallet(5000));
+        mobileCentralUnit = MobileCentralUnit.INSTANCE;
+        mobileCentralUnit.setSmartPhone(this.smartPhone);
     }
 
     public SmartPhone getSmartPhone() {
         return smartPhone;
-    }
-
-    public void setSmartPhone(SmartPhone smartPhone) {
-        this.smartPhone = smartPhone;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
     }
 
     public String getFace()

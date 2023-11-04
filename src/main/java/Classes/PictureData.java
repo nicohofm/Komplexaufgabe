@@ -16,16 +16,8 @@ public class PictureData {
         return licensePlate;
     }
 
-    public void setLicensePlate(LicensePlate licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
     public String getOwnerFace() {
         return ownerFace;
-    }
-
-    public void setOwnerFace(String ownerFace) {
-        this.ownerFace = ownerFace;
     }
 
     public char[][] getPicture() {

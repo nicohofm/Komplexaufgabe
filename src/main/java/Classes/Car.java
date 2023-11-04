@@ -20,18 +20,6 @@ public class Car {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public String getRegistrationID() {
-        return registrationID;
-    }
-
-    public void setRegistrationID(String registrationID) {
-        this.registrationID = registrationID;
-    }
-
     public int getSpeed() {
         return speed;
     }
@@ -44,19 +32,7 @@ public class Car {
         return licensePlate;
     }
 
-    public void setLicensePlate(LicensePlate licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
     public Owner getOwner() {
         return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public char[][] getFrontSide() {
-        return frontSide;
     }
 }

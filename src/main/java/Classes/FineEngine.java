@@ -7,10 +7,8 @@ import org.json.JSONObject;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import Enums.MobileCentralUnit;
 
 public class FineEngine {
     private HashMap<int[], Double> fines;
@@ -25,6 +23,8 @@ public class FineEngine {
         aiEngine = new AIEngine();
         this.mobileNetworkModule = mobileNetworkModule;
         jsonConverter = new ReadWriteJson();
+        fines = new HashMap<>();
+        recordList = new ArrayList<>();
    }
     public void loadFines(HashMap<String, String> map){
         for (String key: map.keySet())
@@ -46,25 +46,22 @@ public class FineEngine {
    }
    public boolean checkFace(String face)
    {
-        AESEncryption aesEncryption = new AESEncryption();
-        String encryptedFace = aesEncryption.encrypt(face);
-        return mobileNetworkModule.isOwnerWanted(encryptedFace);
+        return mobileNetworkModule.isOwnerWanted(face);
    }
 
    public JSONObject getCarOwner(String licensePlate)
    {
-       AESEncryption aesEncryption = new AESEncryption();
-       String dataCarOwner = mobileNetworkModule.checkLicensePlate(aesEncryption.encrypt(licensePlate));
-       return jsonConverter.parseJSONString(aesEncryption.decrypt(dataCarOwner));
+       return jsonConverter.parseJSONString(mobileNetworkModule.checkLicensePlate(licensePlate));
    }
 
    public void createRecord(PictureData pictureData, String name, String birthDay, String phoneNumber, int allowedSpeed, int measuredSpeed, String manufacturer)
    {
         Record record = new Record();
         record.setPicture(pictureData.getPicture());
+        record.setLicencePlate(pictureData.getLicensePlate().getId());
         record.setName(name);
         try{
-           DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+           DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
            Date date = format.parse(birthDay);
            record.setBirthDate(date);
         }
@@ -80,20 +77,18 @@ public class FineEngine {
         record.setNanoTimestamp(timestamp);
         String s = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(timestamp);
         record.setTimestamp(s);
-        record.setPhoneNumber(Integer.parseInt(phoneNumber));
+        record.setPhoneNumber(phoneNumber);
         record.setAllowedSpeed(allowedSpeed);
         record.setMeasuredSpeed(measuredSpeed);
-        record.setMeasuredSpeedAfterDeductionTolerance((measuredSpeed/100)*97);
-        record.setPenalty(getPenalty((measuredSpeed/100)*97));
+        record.setMeasuredSpeedAfterDeductionTolerance((int) (((double)measuredSpeed/100)*97));
+        record.setPenalty(getPenalty(((double)measuredSpeed/100)*97));
         record.setManufacturer(manufacturer);
         recordList.add(record);
    }
 
-    public boolean processFelony(Felony felony){return false;}
-    public int deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){return 1;}
-    private double getPenalty(int measuredSpeedAfterDeductingTolerance){
+    private double getPenalty(double measuredSpeedAfterDeductingTolerance){
         for (int[] key: fines.keySet()) {
-            int speedDifference = measuredSpeedAfterDeductingTolerance - 53;
+            double speedDifference = measuredSpeedAfterDeductingTolerance - 53;
             if(key.length == 1)
             {
                 if(speedDifference > key[0])
@@ -109,8 +104,12 @@ public class FineEngine {
                 }
             }
         }
-       return 1;}
-    public void getMoney(int phoneNumber, int amount){}
+       return 1;
+   }
+
+    public void getMoney(String phoneNumber, double measuredSpeed){
+       mobileNetworkModule.getSmartphone(phoneNumber).getWallet().getMoney(getPenalty(measuredSpeed));
+    }
 
     public AIEngine getAiEngine() {
         return aiEngine;

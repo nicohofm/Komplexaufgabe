@@ -9,7 +9,7 @@ public class AIEngine {
         for (int i = 0; i < picture.length; i++) {
             for (int j = 0; j < picture[i].length; j++) {
                 char c = picture[i][j];
-                if(isLicenseplate && Character.isLetter(c))
+                if(isLicenseplate && (Character.isLetter(c) || Character.isDigit(c)))
                 {
                     licensePlate.append(c);
                 }
