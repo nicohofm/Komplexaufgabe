@@ -16,13 +16,13 @@ public class Record {
     private String manufacturer;
     private Timestamp nanoTimestamp;
     private String timestamp;
-
     private int sequenceID;
 
     public void setNanoTimestamp(Timestamp nanoTimestamp)
     {
         this.nanoTimestamp = nanoTimestamp;
     }
+
     public void setTimestamp(String timestamp)
     {
         this.timestamp = timestamp;
@@ -31,6 +31,7 @@ public class Record {
     public void setSequenceID(int sequenceID) {
         this.sequenceID = sequenceID;
     }
+
     public Timestamp getNanoTimestamp()
     {
         return nanoTimestamp;
@@ -45,14 +46,17 @@ public class Record {
     {
         return sequenceID;
     }
+
     public String getManufacturer()
     {
         return manufacturer;
     }
+
     public String getTimestamp()
     {
         return timestamp;
     }
+
     public char[][] getPicture() {
         return picture;
     }

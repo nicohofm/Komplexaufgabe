@@ -13,9 +13,6 @@ public class Officer extends Human {
         this.id = id;
         idCard = new IDCard(pin/*, fingerprint*/);
     }
-    public int getId() {
-        return id;
-    }
 
     public IDCard getIdCard() {
         return idCard;

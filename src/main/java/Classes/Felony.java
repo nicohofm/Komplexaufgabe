@@ -47,9 +47,4 @@ public class Felony {
     public char[][] getPicture() {
         return picture;
     }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
 }

@@ -28,18 +28,6 @@ public class Owner extends Human {
         return smartPhone;
     }
 
-    public void setSmartPhone(SmartPhone smartPhone) {
-        this.smartPhone = smartPhone;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
     public String getFace()
     {
         return face;

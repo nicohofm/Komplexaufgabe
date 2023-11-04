@@ -86,9 +86,7 @@ public class FineEngine {
         recordList.add(record);
    }
 
-    public boolean processFelony(Felony felony){return false;}
-    public int deductingSpeedTolerance(int allowedSpeed, int measuredSpeed){return 1;}
-    private double getPenalty(int measuredSpeedAfterDeductingTolerance){
+    private double getPenalty(double measuredSpeedAfterDeductingTolerance){
         for (int[] key: fines.keySet()) {
             int speedDifference = measuredSpeedAfterDeductingTolerance - 53;
             if(key.length == 1)

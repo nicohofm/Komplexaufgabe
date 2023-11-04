@@ -51,13 +51,4 @@ public class CentralUnit {
             return false;
         }
     }*/
-    public void AddRecord(Record record){
-
-    }
-    public void CreateReport(){
-
-    }
-    public void CreateExport(){
-
-    }
 }
