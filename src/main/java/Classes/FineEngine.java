@@ -105,7 +105,7 @@ public class FineEngine {
    }
 
     public void getMoney(String phoneNumber, double measuredSpeed){
-       mobileNetworkModule.getSmartphone(phoneNumber).getWallet().getMoney(getPenalty(measuredSpeed));
+       mobileNetworkModule.getSmartphone(phoneNumber).getMoney(getPenalty(measuredSpeed));
     }
 
     public AIEngine getAiEngine() {
