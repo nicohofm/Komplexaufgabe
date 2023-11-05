@@ -14,6 +14,7 @@ public class FineEngine {
     private final HashMap<int[], Double> fines;
     private int sequenceID = 1;
     private final MobileNetworkModule mobileNetworkModule;
+    private CentralUnit centralUnit;
     private final ReadWriteJson jsonConverter;
     private final AIEngine aiEngine;
     private final List<Record> recordList;
@@ -104,7 +105,7 @@ public class FineEngine {
    }
 
     public void getMoney(String phoneNumber, double measuredSpeed){
-       mobileNetworkModule.getSmartphone(phoneNumber).getMoney(getPenalty(measuredSpeed));
+       mobileNetworkModule.getSmartphone(phoneNumber).getWallet().getMoney(getPenalty(measuredSpeed));
     }
 
     public AIEngine getAiEngine() {

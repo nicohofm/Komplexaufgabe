@@ -9,8 +9,8 @@ public class SmartPhone {
         this._wallet = wallet;
     }
 
-    public void getMoney(double amount){
-        _wallet.getMoney(amount);
+    public void getMoney(int amount){
+
     }
 
     public String getPhoneNumber() {

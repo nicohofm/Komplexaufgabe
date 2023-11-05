@@ -3,12 +3,7 @@ package Classes;
 import Enums.Colors;
 
 public class LED {
-    private final Colors colors;
-
-    public LED()
-    {
-        colors = Colors.RED;
-    }
+    private Colors colors;
 
     public void Flash(){
 

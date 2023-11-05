@@ -12,6 +12,7 @@ import java.util.Date;
 public class Owner extends Human {
     private final MobileCentralUnit mobileCentralUnit;
     private final SmartPhone smartPhone;
+    private Car car;
 
     public Owner(String name, LocalDate birthdate, String face, String phoneNumber)
     {

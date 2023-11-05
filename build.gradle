@@ -12,4 +12,33 @@ repositories {
 dependencies {
     implementation group: 'commons-codec', name: 'commons-codec', version: '1.16.0'
     implementation group: 'org.json', name: 'json', version: '20231013'
+    implementation 'io.cucumber:cucumber-java:7.13.0'
+    implementation 'io.cucumber:cucumber-java:7.13.0'
+    implementation 'io.cucumber:cucumber-java:7.13.0'
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-runner:1.10.0")
+    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
+    testImplementation("org.mockito:mockito-core:3.+")
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+    failFast = true
+    testLogging {
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests completed, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
 }

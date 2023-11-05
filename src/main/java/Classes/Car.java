@@ -6,6 +6,7 @@ public class Car {
     private int speed;
     private final LicensePlate licensePlate;
     private final Owner owner;
+    private final char[][] frontSide = new char[16][8];
 
     public Car(LicensePlate licensePlate, String registrationID, String manufacturer, Owner owner)
     {

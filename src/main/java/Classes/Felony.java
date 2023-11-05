@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class Felony {
     private char[][] picture;
+    private Timestamp timestamp;
 
     public Felony(){
         picture = new char[16][8];
