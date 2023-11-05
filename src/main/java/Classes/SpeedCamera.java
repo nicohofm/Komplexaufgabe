@@ -1,25 +1,27 @@
 package Classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
 public class SpeedCamera {
     private UUID serialNumber;
-    private Date manufacturingDate;
+    private String manufacturingDate;
     private boolean isShutdown;
     private final MobileNetworkModule mobileNetworkModule;
     private final LED led;
     private final LaserScanner laserScanner;
     private final CentralUnit centralUnit;
     private final TraficSpikes traficSpikes;
-    private Police police;
     private FineEngine fineEngine;
     private final Camera camera;
-    private ParkingSpace parkingSpace;
+    //private ParkingSpace parkingSpace;
     // private EMP emp;
 
     public SpeedCamera()
     {
+        serialNumber = UUID.randomUUID();
+        manufacturingDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         mobileNetworkModule = new MobileNetworkModule();
         this.isShutdown = true;
         traficSpikes = new TraficSpikes();

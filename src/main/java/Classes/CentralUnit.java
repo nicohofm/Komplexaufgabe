@@ -9,8 +9,6 @@ import java.util.TreeMap;
 
 public class CentralUnit {
     private final TreeMap<Integer, Officer> registeredOfficers;
-    private Record[] fineRecord;
-    private IEncryption encryptionSHA256;
 
     public CentralUnit()
     {

@@ -14,7 +14,6 @@ public class FineEngine {
     private final HashMap<int[], Double> fines;
     private int sequenceID = 1;
     private final MobileNetworkModule mobileNetworkModule;
-    private CentralUnit centralUnit;
     private final ReadWriteJson jsonConverter;
     private final AIEngine aiEngine;
     private final List<Record> recordList;
